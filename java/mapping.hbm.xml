@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.component.mapping.User" table="user">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name"></property>
+		<property name="username"></property>
+		<property name="password"></property>
+		<property name="email"></property>
+		
+		<list name="posts" cascade="all">
+			<key column="uid"></key>
+			<index column="type"></index>
+			<one-to-many class="com.component.mapping.Post" />
+		</list>
+
+	</class>
+
+	<class name="com.component.mapping.Post" table="post">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="title"></property>
+		<property name="body"></property>
+	</class>
+
+</hibernate-mapping>  
